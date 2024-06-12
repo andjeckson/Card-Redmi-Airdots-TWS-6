@@ -1,4 +1,4 @@
-# Card Redmi Airdots TWS-6
+# Card Redmi Airdots TWS-6.
 
 #### Um card feito com o intuito de criar algo único.
 
