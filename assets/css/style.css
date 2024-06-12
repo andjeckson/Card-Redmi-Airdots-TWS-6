@@ -1,1 +1,321 @@
+@font-face {
+  font-family: Urbanist;
+  src: url('Fontes/Urbanist-Medium.ttf');
+}
 
+
+html
+{
+  font-size: 62.5%;
+  height: 100vh;
+  width: 100vw;
+}
+
+body
+{
+  margin: 0;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background: #222;
+}
+
+
+.card
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:  column;
+  gap: 10px 0;
+  padding: 30px;
+  background: linear-gradient(#eee, #aaa);
+  box-shadow: 0 0 25px #55555545;
+  border-radius: 40px;
+  position: relative;
+  max-width: 400px;
+  font-family: Urbanist, sans-serif;
+  user-select: none
+}
+
+.card header
+{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 70px;
+}
+
+.card header .preco
+{
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.card header img.logo
+{
+  width: 20px;
+}
+
+.card .case-airdots
+{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  width: 200px;
+  background-image: url('../img/Parte-interna.png');
+  background-size: 100% 100%;
+  filter: drop-shadow(0 5px 10px #bbb);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.card .case-airdots.ativo
+{
+  background: transparent;
+}
+
+.card .case-airdots .airdots
+{
+  display: none;
+  object-fit: cover;
+  animation:  flutuar 1s linear alternate infinite
+}
+
+@keyframes flutuar
+{
+  from
+  {
+    transform: translateY(-5px);
+  }
+  
+  to
+  {
+    transform: translateY(5px);
+  }
+  
+}
+
+
+.card .case-airdots.ativo .airdots
+{
+  display: block;
+  width: 150px;
+  filter: drop-shadow(0 10px 15px #aaa)
+}
+
+.card .case-airdots.ativo:after,
+.card .case-airdots.ativo:before,
+.card .case-airdots.ativo .logo
+{
+  display: none;
+}
+
+
+.card .case-airdots:after
+{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(to top, #070707, #333534, #070707);
+  border: 2px solid #333534;
+  transition: 500ms linear;
+}
+
+.card .case-airdots:before
+{
+  content: '';
+  position: absolute;
+  top: -2px;
+  width: 50px;
+  height: 10px;
+  background: #000;
+}
+
+.card .case-airdots.aberta:after
+{
+  top: -35px;
+  height: 30px;
+  border-radius: 30%;
+  box-shadow: 0 0 0 #aaa;
+  transform: skewX(-3deg);
+  background: linear-gradient(to left, #070707, #333534, #070707);   
+}
+
+.card .case-airdots.aberta > .logo
+{
+  transform: translateY(-85px) scale(0) rotateX(30deg);
+}
+
+.case-airdots .leds-case
+{
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  bottom: 18px;
+  width: 35px;
+  height: 20px;
+}
+
+.case-airdots .leds-case .led,
+.case-airdots .leds-airdots .led
+{
+  display: inline-block;
+  height: 3px;
+  width: 3px;
+  border-radius: 3px;
+  box-shadow: 0 0 15px #fff;
+  background: #111;
+  transition: background 150ms linear
+}
+
+
+.case-airdots .leds-airdots.aceso .led
+{
+  background: #FF0303;
+  box-shadow: 0 0 5px #FF6868;
+}
+.case-airdots .leds-case .led.aceso
+{
+  background: #F6FCFF;
+}
+
+.case-airdots .leds-airdots .led
+{
+  position: absolute;
+  width: 2px;
+  height: 2px;
+}
+
+.case-airdots .leds-airdots .led.esquerda
+{
+  top: 65px;
+  left: 57px;
+}
+
+.case-airdots .leds-airdots .led.direita
+{
+  top: 65px;
+  right: 60px;
+}
+
+.case-airdots.ativo .leds-case .led
+{
+  display: none;
+}
+
+.case-airdots.ativo .leds-airdots .led.esquerda
+{
+  top: 22px;
+  left: 160px;
+  background: #111;
+  z-index: 100;
+  animation:  flutuar 1s linear alternate infinite, piscar 300ms linear 5
+}
+
+.case-airdots.ativo .leds-airdots .led.direita
+{
+  top: 80px;
+  left: 45px;
+  z-index: 100;
+  background: #000;
+  animation:  flutuar 1s linear alternate infinite, piscar 500ms linear 5
+}
+
+@keyframes piscar
+{
+  0%,25%
+  {
+    background: #37F144;
+  }
+  50%,100%
+  {
+    background: #FF0000;
+  }
+}
+
+.card .case-airdots .logo
+{
+  z-index: 2;
+  width: 20px;
+  filter: invert( 50% );
+  opacity: 0.5;
+  transition: 500ms linear;
+}
+
+.card .informacoes
+{
+  margin-top: 35px;
+  line-height: 20px
+}
+
+  
+
+.card .informacoes h3
+{
+  font-size: 1.7rem;
+  color: #222;
+  animation: subir 400ms ease-in
+}
+
+.card .informacoes p
+{
+  font-size: 1.3rem;
+  color: #555;
+  animation: subir 400ms ease-in
+}
+
+@keyframes subir
+{
+  from
+  {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+.card .acoes{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 100%;
+}
+
+.card button
+{
+  display: inline-flex;
+  box-sizing: content-box;
+  margin-top: 40px;
+  padding: 10px;
+  width: 100%;
+  height: 25px;
+  border: 1px #aaa solid;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to left, #070707, #333534, #070707);
+  border-radius: 15rem;
+  box-shadow: 0 5px 15px #55555545;
+  color: #eee;
+  text-transform: uppercase;
+  user-select: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent
+}
+
+.card button:active
+{
+  box-shadow: 0 0 0 #55555545;
+  opacity: 0.9;
+}
