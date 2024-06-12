@@ -1,6 +1,6 @@
 @font-face {
-  font-family: Urbanist;
-  src: url('Fontes/Urbanist-Medium.ttf');
+  font-family: 'Urbanist';
+  src: url('../fonts/Urbanist-Medium.ttf');
 }
 
 
@@ -38,7 +38,7 @@ body
   border-radius: 40px;
   position: relative;
   max-width: 400px;
-  font-family: Urbanist, sans-serif;
+  font-family: 'Urbanist', sans-serif;
   user-select: none
 }
 
